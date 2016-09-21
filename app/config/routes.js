@@ -10,6 +10,11 @@ const router  = express.Router( );
 //use apiDoc to generate documentation for API routes
 //Details on how to use on: http://apidocjs.com/
 
+router.get( "/test", function( req, res ) {
+    console.log( req );
+    res.json( { success: true } );
+} );
+
 router.use( errorsController.notFound );
 
 module.exports = function( app ) {
