@@ -5,7 +5,7 @@ const express = require( "express" );
 const router  = express.Router( );
 
 // Add routes below
-// Example: router.post/get/put/ ..../delete ( path, middlewares ( if any ), controllerFunction );
+// Example: router.post/get/put/ ..../delete ( path ), middlewares ( if any ), controllerFunction );
 
 //use apiDoc to generate documentation for API routes
 //Details on how to use on: http://apidocjs.com/
