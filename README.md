@@ -1,4 +1,5 @@
 Todos:
+* asdasd
 * check the eslint reference styleguide and use the same classification: https://github.com/FortechRomania/eslint-config/blob/master/.eslintrc
 * check all dependencies in package.json (is save-mongodb or mongoose-timestamps needed?)
 * add readme.txt(markup for github) when you can specify the dependencies for running the project (ex: npm i -g nodemon, apidoc, etc.)
