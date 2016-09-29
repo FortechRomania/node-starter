@@ -39,6 +39,9 @@ router.post( "/users/registration", setUser, usersController.register );
 *    @api {put} /users/edit Edit the profile and filtering options.
 *    @apiDescription Useful to change profile information
 *    @apiParam {String} id  User ID required.
+*    @apiParam {String} name  Mandatory name.
+*    @apiParam {Number} age  Mandatory age. Minimum 18.
+*    @apiParam {String} sex  Mandatory sex.
 */
 router.put( "/users/edit", authorize, usersController.edit );
 
