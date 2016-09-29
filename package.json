@@ -24,8 +24,7 @@
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1",
     "mongoose-timestamp": "^0.6.0",
-    "save": "^2.3.0",
-    "save-mongodb": "^1.1.1"
+    "save": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2"
