@@ -29,7 +29,8 @@ const router  = express.Router( );
 *            "name": "Ana",
 *          	 "sex": "female",
 * 	         "age": 30
-*       }
+*           }
+*      }
 */
 router.post( "/users/registration", setUser, usersController.register );
 
