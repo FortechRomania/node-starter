@@ -35,10 +35,10 @@ The command will generate a /doc folder that will contain an index.html file. Op
 The project contains two main folders.
 The first is called /app and has the following subfolders:
 
->*config - folder that contains: express and mongoose setup, API routes and configurations for development and production environments.
->*controllers - folder that will contain all controllers involved in the app
->*models - folder with the models considered
->*middlewares - folder with functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle
->*utilities - folder with functions that can be used in app to avoid repetitive code
+ *config - folder that contains: express and mongoose setup, API routes and configurations for development and production environments.
+ *controllers - folder that will contain all controllers involved in the app
+ *models - folder with the models considered
+ *middlewares - folder with functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle
+ *utilities - folder with functions that can be used in app to avoid repetitive code
 
 The second folder is called /doc and contains API route documentation generated with apidoc ( see above how to re-generate the index.html )
