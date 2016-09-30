@@ -1,9 +1,46 @@
-Todos:
-* check the eslint reference styleguide and use the same classification: https://github.com/FortechRomania/eslint-config/blob/master/.eslintrc
-* check all dependencies in package.json (is save-mongodb or mongoose-timestamps needed?)
-* add readme.txt(markup for github) when you can specify the dependencies for running the project (ex: npm i -g nodemon, apidoc, etc.)
-* annotate all functions with documentation comments
-* add apidoc to the project + demo
-* refactor "validationError" to not rely on a static array of validations, but to display all errors for each field separately (a simpler version in the end)
-* add a models folder and a test mongoose model as a reference (with validations) + controller again as a reference
-* add a middleware for authentication via jwt - https://github.com/auth0/node-jsonwebtoken
+* This project is an application skeleton for a typical [Node.js](https://nodejs.org/) web app.
+
+## Getting Started
+    To get you started you can simply clone the node-seed repository and install the dependencies:
+
+### Prerequisites
+    You need git to clone the node-seed repository. You can get git from
+[http://git-scm.com/](http://git-scm.com/).
+
+A number of node.js tools is necessary to initialize and test node-seed. You must have node.js and its package manager (npm) installed. You can get them from  [http://nodejs.org/](http://nodejs.org/). The tools/modules used in this project are listed in package.json and include express, mongodb and mongoose.
+
+### Clone node-seed
+Clone the node-seed repository using [git][git]:
+
+    git clone "path from git"
+
+### Install node-seed project dependencies
+
+    npm install
+
+### Run the Application
+
+The project is preconfigured with a simple development web server.  The simplest way to start this server is:
+
+    npm start
+
+### Generate API documentation
+
+    npm run doc
+
+    The command will generate a /doc folder that will contain an index.html file. Open it in any browser. The file contains information about API routes.
+
+### Project Structure
+
+    The project contains two main folders.
+    The first is called /app and has the following subfolders:
+        /config - folder that contains: express and mongoose setup, API routes and configurations for development and production environments.
+        /controllers - folder that will contain all controllers involved in the app
+        /models - folder with the models considered
+        /middlewares - folder with functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle
+        /utilities - folder with functions that can be used in app to avoid repetitive code
+    The second folder is called /doc and contains API route documentation generated with apidoc ( see above how to re-generate the index.html )
+
+## Credits
+
+## Licence
