@@ -25,16 +25,11 @@ const customResponses = {
             return this.serverError( );
         }
 
-        // TODO: check all schemas and potentially extract all keys from there?
-        const validationTypes = [ "required", "min", "max", "enum", "maxLen" ];
-        const errorResponse = { };
-        validationTypes.forEach( type => {
-            const typeFields = extractValidationType( error.errors, type );
-            if ( typeFields.length > 0 ) {
-                errorResponse[ type ] = typeFields;
-            }
-        } );
-
+        let errorResponse = { };
+        const typeFields = extractValidationType( error.errors );
+        if ( typeFields.length > 0 ) {
+            errorResponse = typeFields;
+        }
         this.unprocessableEntity( errorResponse );
     },
 
@@ -73,9 +68,8 @@ module.exports = function( req, res, next ) {
     next( );
 };
 
-function extractValidationType( errors, type ) {
+function extractValidationType( errors ) {
     const fields = Object.keys( errors );
     return fields.map( key => errors[ key ] )
-                 .filter( validation => validation.kind === type )
-                 .map( validation => ( { path: validation.path, message: validation.message } ) );
+                 .map( validation => ( { errorOnField: validation.path, message: validation.message } ) );
 }
