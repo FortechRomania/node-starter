@@ -1,10 +1,11 @@
 const mongoose      = require( "mongoose" );
 const extractObject = require( "../utilities/functions" ).extractObject;
 const User          = mongoose.model( "User" );
+const jwt           = require( "jsonwebtoken" );
+const SECRET        = "superSuperSecret";
 
 exports.register = ( req, res ) => {
     let user     = req.user;
-
     if ( user ) {
         res.preconditionFailed( "existing_user" );
     } else {
@@ -15,8 +16,41 @@ exports.register = ( req, res ) => {
             } else {
                 res.success( extractObject(
                     savedUser,
-                    [ "id", "name", "age", "sex" ] ) );
+                    [ "id", "name", "age", "sex", "username", "password" ] ) );
             }
+        } );
+    }
+};
+
+exports.login = ( req, res ) => {
+    let user  = req.user;
+    if ( !req.body.password ) {
+        res.status( 400 ).send( "password required" );
+        return;
+    }
+
+    const password = req.body.password;
+
+    if ( user ) {
+        if ( user.password !== password ) {
+            res.json( {
+                success: false,
+                message: "Authentication failed. Wrong password."
+            } );
+        } else {
+            const token = jwt.sign( user, SECRET, {
+                expiresIn: 1440
+            } );
+
+            res.json( {
+                success: true,
+                token: token
+            } );
+        }
+    } else {
+        res.json( {
+            success: false,
+            message: "Authentication failed. User not found."
         } );
     }
 };

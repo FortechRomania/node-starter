@@ -2,12 +2,17 @@ const errorsController = require( "../controllers/errorsController" );
 const usersController  = require( "../controllers/usersController" );
 //add other controllers that are used
 
-const authorize = require( "../middlewares/authorize" );
-const setUser   = require( "../middlewares/setUser" );
+const validateToken = require( "../middlewares/validateToken" );
+const authorize     = require( "../middlewares/authorize" );
+const setUser       = require( "../middlewares/setUser" );
 //add other middlewares that are used
 
 const express = require( "express" );
 const router  = express.Router( );
+const app     = express( );
+
+const expressJWT = require( "express-jwt" );
+const SECRET     = "superSuperSecret";
 
 // Add routes below
 // Example: router.post/get/put/ ..../delete ( path ), middlewares ( if any ), controllerFunction );
@@ -26,6 +31,8 @@ const router  = express.Router( );
 *       {
 *         "user": {
 *            "id": 123456789,
+*            "username": "user123"
+*            "password": "pass123"
 *            "name": "Ana",
 *          	 "sex": "female",
 * 	         "age": 30
@@ -36,6 +43,21 @@ router.post( "/users/registration", setUser, usersController.register );
 
 /**
 *    @apiGroup User
+*    @api {post} /users/login Adding an user to the db.
+*    @apiParam {String} id  User ID required.
+*    @apiParam {String} username  User username required.
+*    @apiParam {String} password  User password required.
+*    @apiExample {response} Example response:
+*       {
+*         "user": {
+*            "token": 123456789,
+*           }
+*      }
+*/
+router.post( "/users/login", setUser, usersController.login );
+
+/**
+*    @apiGroup User
 *    @api {put} /users/edit Edit the profile and filtering options.
 *    @apiDescription Useful to change profile information
 *    @apiParam {String} id  User ID required.
@@ -43,7 +65,7 @@ router.post( "/users/registration", setUser, usersController.register );
 *    @apiParam {Number} age  Mandatory age. Minimum 18.
 *    @apiParam {String} sex  Mandatory sex.
 */
-router.put( "/users/edit", authorize, usersController.edit );
+router.put( "/users/edit", authorize, validateToken, usersController.edit );
 
 /**
 *    @apiGroup User
@@ -54,11 +76,13 @@ router.put( "/users/edit", authorize, usersController.edit );
 *           id:123456789
 *       }
 */
-router.delete( "/users/delete", authorize, usersController.delete );
+router.delete( "/users/delete", authorize, validateToken, usersController.delete );
 
 router.get( "/test", function( req, res ) {
     res.json( { success: true } );
 } );
+
+// app.use( expressJWT( { secret: SECRET } ).unless( { path: [ "/login", "/registration" ] } ) );
 
 router.use( errorsController.notFound );
 
