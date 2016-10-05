@@ -1,1 +1,1 @@
-define({  "name": "node-starter",  "version": "1.0.0",  "description": "node starter",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2016-10-05T13:16:39.875Z",    "url": "http://apidocjs.com",    "version": "0.16.1"  }});
+define({  "name": "node-starter",  "version": "1.0.0",  "description": "node starter",  "sampleUrl": false,  "apidoc": "0.2.0",  "generator": {    "name": "apidoc",    "time": "2016-10-05T13:21:12.326Z",    "url": "http://apidocjs.com",    "version": "0.16.1"  }});

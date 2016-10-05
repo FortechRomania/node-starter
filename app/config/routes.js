@@ -39,7 +39,7 @@ router.post( "/users/registration", setUser, usersController.register );
 
 /**
 *    @apiGroup User
-*    @api {post} /users/login Adding an user to the db.
+*    @api {post} /users/login User login route.
 *    @apiParam {String} id  User ID required.
 *    @apiParam {String} username  User username required.
 *    @apiParam {String} password  User password required.
