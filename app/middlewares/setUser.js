@@ -8,7 +8,7 @@ module.exports = function( req, res, next ) {
     }
 
     User.findOne(
-        { id: id },
+        { id },
         function( err, user ) {
             if ( err ) {
                 return res.serverError( );
