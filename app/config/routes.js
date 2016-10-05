@@ -30,8 +30,8 @@ const router  = express.Router( );
 *            "username": "user123"
 *            "password": "pass123"
 *            "name": "Ana",
-*          	 "sex": "female",
-* 	         "age": 30
+*            "sex": "female",
+*            "age": 30
 *           }
 *      }
 */
@@ -46,7 +46,7 @@ router.post( "/users/registration", setUser, usersController.register );
 *    @apiExample {response} Example response:
 *       {
 *         "user": {
-*            "token": 123456789,
+*            "token": dahljkhajfhajku32974eq9kjh
 *           }
 *      }
 */
