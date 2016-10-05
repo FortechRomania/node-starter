@@ -9,10 +9,6 @@ const setUser       = require( "../middlewares/setUser" );
 
 const express = require( "express" );
 const router  = express.Router( );
-const app     = express( );
-
-const expressJWT = require( "express-jwt" );
-const SECRET     = "superSuperSecret";
 
 // Add routes below
 // Example: router.post/get/put/ ..../delete ( path ), middlewares ( if any ), controllerFunction );
@@ -81,8 +77,6 @@ router.delete( "/users/delete", authorize, validateToken, usersController.delete
 router.get( "/test", function( req, res ) {
     res.json( { success: true } );
 } );
-
-// app.use( expressJWT( { secret: SECRET } ).unless( { path: [ "/login", "/registration" ] } ) );
 
 router.use( errorsController.notFound );
 

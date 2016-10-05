@@ -1,5 +1,6 @@
-const jwt           = require( "jsonwebtoken" );
-const SECRET        = "superSuperSecret";
+const jwt    = require( "jsonwebtoken" );
+const SECRET = "superSuperSecret";
+
 module.exports = function( req, res, next ) {
     const token = req.body.token || req.query.token || req.headers[ "x-access-token" ];
 
