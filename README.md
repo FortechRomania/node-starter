@@ -9,6 +9,9 @@ You need git to clone the node-seed repository. You can get git from
 
 A number of node.js tools is necessary to initialize and test node-seed. You must have node.js and its package manager (npm) installed. You can get them from  [http://nodejs.org/](http://nodejs.org/). The tools/modules used in this project are listed in package.json and include express, mongodb and mongoose.
 
+#### MongoDB
+The project uses MongoDB as a database. If you are on Mac and using Homebrew package manager the installation is as simple as `brew install mongodb`.
+
 ### Clone node-seed
 Clone the node-seed repository using [git][git]:
 
@@ -18,9 +21,12 @@ Clone the node-seed repository using [git][git]:
 
     npm install
 
+### Start the MongoDB server
+First we need to create the `db` directory where the database files will live in. In your terminal navigate to the `root` of your system by doing `cd ..` until you reach the top directory. You can create the directory by running `sudo mkdir -p /data/db`. Now open a different tab in your terminal and run `mongod` to start the Mongo server.
+
 ### Run the Application
 
-The project is preconfigured with a simple development web server.  The simplest way to start this server is:
+The project is preconfigured with a simple development web server. The simplest way to start this server is:
 
     npm start
 
