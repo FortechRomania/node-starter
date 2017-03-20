@@ -12,6 +12,10 @@ A number of node.js tools is necessary to initialize and test node-seed. You mus
 #### MongoDB
 The project uses MongoDB as a database. If you are on Mac and using Homebrew package manager the installation is as simple as `brew install mongodb`.
 
+#### Apidoc
+To install run `npm install apidoc -g`.
+
+
 ### Clone node-seed
 Clone the node-seed repository using [git][git]:
 
