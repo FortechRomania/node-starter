@@ -1,4 +1,4 @@
-const jwt    = require( "jsonwebtoken" );
+const jwt = require( "jsonwebtoken" );
 const SECRET = "superSuperSecret";
 
 module.exports = function( req, res, next ) {
@@ -9,17 +9,16 @@ module.exports = function( req, res, next ) {
             if ( err ) {
                 return res.json( {
                     success: false,
-                    message: "Failed to authenticate token."
+                    message: "Failed to authenticate token.",
                 } );
-            } else {
-                req.decoded = decoded;
-                next( );
             }
+            req.decoded = decoded;
+            next( );
         } );
     } else {
         return res.status( 403 ).send( {
             success: false,
-            message: "No token provided."
+            message: "No token provided.",
         } );
     }
 };

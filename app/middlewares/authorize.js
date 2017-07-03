@@ -1,11 +1,11 @@
 const mongoose = require( "mongoose" );
-const User     = mongoose.model( "User" );
+const User = mongoose.model( "User" );
 
 module.exports = function( req, res, next ) {
     const id = req.body.id;
 
     User.findOne(
-        { id: id },
+        { id },
         function( err, user ) {
             if ( err || !user ) {
                 if ( err ) {
@@ -18,6 +18,5 @@ module.exports = function( req, res, next ) {
             }
             req.user = user;
             return next( );
-        }
-    );
+        } );
 };

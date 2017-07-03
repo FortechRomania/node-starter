@@ -1,4 +1,4 @@
-const config   = require( "./index" );
+const config = require( "./index" );
 const mongoose = require( "mongoose" );
 
 module.exports = function( app ) {

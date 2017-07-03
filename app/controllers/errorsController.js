@@ -11,6 +11,6 @@ exports.errorLogger = ( err, req, res, next ) => {
 exports.errorHandler = ( err, req, res, next ) => {
     res.status( 503 ).json( {
         success: false,
-        error: "server_error"
+        error: "server_error",
     } );
 };

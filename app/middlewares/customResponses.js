@@ -2,21 +2,21 @@ const customResponses = {
     success( payload ) {
         this.status( 200 ).json( {
             success: true,
-            payload: payload
+            payload: payload,
         } );
     },
 
     unauthorized( ) {
         this.status( 401 ).json( {
             success: false,
-            error: "unauthorized"
+            error: "unauthorized",
         } );
     },
 
     preconditionFailed( customError ) {
         this.status( 412 ).json( {
             success: false,
-            error: customError || "precondition_failed"
+            error: customError || "precondition_failed",
         } );
     },
 
@@ -36,7 +36,7 @@ const customResponses = {
     blocked( ) {
         this.status( 410 ).json( {
             success: false,
-            error: "version_blocked"
+            error: "version_blocked",
         } );
     },
 
@@ -44,23 +44,23 @@ const customResponses = {
         this.status( 422 ).json( {
             success: false,
             error: "unprocessable_entity",
-            payload: customError
+            payload: customError,
         } );
     },
 
     notFound( ) {
         this.status( 404 ).json( {
             success: false,
-            error: "not_found"
+            error: "not_found",
         } );
     },
 
     serverError( ) {
         this.status( 503 ).json( {
             success: false,
-            error: "server_error"
+            error: "server_error",
         } );
-    }
+    },
 };
 
 module.exports = function( req, res, next ) {

@@ -1,11 +1,12 @@
-const mongoose      = require( "mongoose" );
+const mongoose = require( "mongoose" );
 const extractObject = require( "../utilities/functions" ).extractObject;
-const User          = mongoose.model( "User" );
-const jwt           = require( "jsonwebtoken" );
-const SECRET        = "superSuperSecret";
+const jwt = require( "jsonwebtoken" );
+
+const User = mongoose.model( "User" );
+const SECRET = "superSuperSecret";
 
 exports.register = ( req, res ) => {
-    let user     = req.user;
+    let user = req.user;
     if ( user ) {
         res.preconditionFailed( "existing_user" );
     } else {
@@ -23,7 +24,7 @@ exports.register = ( req, res ) => {
 };
 
 exports.login = ( req, res ) => {
-    let user  = req.user;
+    const user = req.user;
     if ( !req.body.password ) {
         res.status( 400 ).send( "password required" );
         return;
@@ -35,22 +36,22 @@ exports.login = ( req, res ) => {
         if ( user.password !== password ) {
             res.json( {
                 success: false,
-                message: "Authentication failed. Wrong password."
+                message: "Authentication failed. Wrong password.",
             } );
         } else {
             const token = jwt.sign( user, SECRET, {
-                expiresIn: 1440
+                expiresIn: 1440,
             } );
 
             res.json( {
                 success: true,
-                token: token
+                token,
             } );
         }
     } else {
         res.json( {
             success: false,
-            message: "Authentication failed. User not found."
+            message: "Authentication failed. User not found.",
         } );
     }
 };
@@ -58,12 +59,12 @@ exports.login = ( req, res ) => {
 exports.edit = ( req, res ) => {
     const user = req.user;
     const name = req.body.name;
-    const sex  = req.body.sex;
-    const age  = req.body.age;
+    const sex = req.body.sex;
+    const age = req.body.age;
 
-    user.name  = name;
-    user.sex   = sex;
-    user.age   = age;
+    user.name = name;
+    user.sex = sex;
+    user.age = age;
 
     user.save( function( err, savedUser ) {
         if ( err ) {

@@ -30,6 +30,7 @@
     "save": "^2.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "^6.1.2"
+    "babel-eslint": "^6.1.2",
+    "eslint-config-fortech": "^1.0.0"
   }
 }
