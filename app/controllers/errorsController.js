@@ -8,7 +8,7 @@ exports.errorLogger = ( err, req, res, next ) => {
 };
 
 // Don't remove next !!!!
-exports.errorHandler = ( err, req, res, next ) => {
+exports.errorHandler = ( err, req, res, next ) => { // eslint-disable-line no-unused-vars
     res.status( 503 ).json( {
         success: false,
         error: "server_error",

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --watch app app/index.js",
     "doc": "apidoc -i app/ -o doc",
-    "lint": "eslint"
+    "lint": "eslint app",
+    "ci": "npm run lint"
   },
   "repository": {
     "type": "git",
