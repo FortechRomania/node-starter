@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --watch app app/index.js",
-    "doc": "apidoc -i app/ -o doc"
+    "doc": "apidoc -i app/ -o doc",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,6 @@
     "jsonwebtoken": "^7.1.9",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1",
-    "mongoose-timestamp": "^0.6.0",
     "save": "^2.3.0"
   },
   "devDependencies": {
