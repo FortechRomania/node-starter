@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --watch app app/index.js",
-    "doc": "apidoc -i app/ -o doc",
-    "lint": "eslint app",
+    "start": "nodemon --watch src src/index.js",
+    "doc": "apidoc -i src/ -o doc",
+    "lint": "eslint src",
     "ci": "npm run lint"
   },
   "repository": {

@@ -1,10 +1,9 @@
-const errorsController = require( "../controllers/errorsController" );
-const usersController = require( "../controllers/usersController" );
-// add other controllers that are used
+require( "./model" );
+const usersController = require( "./controller" );
 
-const validateToken = require( "../middlewares/validateToken" );
-const authorize = require( "../middlewares/authorize" );
-const setUser = require( "../middlewares/setUser" );
+const validateToken = require( "../../middlewares/validateToken" );
+const authorize = require( "../../middlewares/authorize" );
+const setUser = require( "../../middlewares/setUser" );
 // add other middlewares that are used
 
 const express = require( "express" );
@@ -75,14 +74,4 @@ router.put( "/users/edit", authorize, validateToken, usersController.edit );
 */
 router.delete( "/users/delete", authorize, validateToken, usersController.delete );
 
-router.get( "/test", function( req, res ) {
-    res.json( { success: true } );
-} );
-
-router.use( errorsController.notFound );
-
-module.exports = function( app ) {
-    app.use( "/", router );
-    app.use( errorsController.errorLogger );
-    app.use( errorsController.errorHandler );
-};
+module.exports = router;
