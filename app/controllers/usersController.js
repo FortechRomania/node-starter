@@ -1,5 +1,5 @@
 const mongoose = require( "mongoose" );
-const extractObject = require( "../utilities/functions" ).extractObject;
+const extractObject = require( "../utilities" ).extractObject;
 const jwt = require( "jsonwebtoken" );
 
 const User = mongoose.model( "User" );
