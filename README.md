@@ -1,5 +1,7 @@
 This project is an application skeleton for a typical [Node.js](https://nodejs.org/) web app.
 
+[![Build Status](https://travis-ci.org/FortechRomania/node-starter.svg?branch=master)](https://travis-ci.org/FortechRomania/node-starter)
+
 ## Getting Started
 To get you started you can simply clone the node-seed repository and install the dependencies:
 
