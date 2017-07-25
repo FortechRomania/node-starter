@@ -1,10 +1,9 @@
-const errorsController = require( "../controllers/errorsController" );
-const usersController = require( "../controllers/usersController" );
-// add other controllers that are used
+require( "./model" );
+const controller = require( "./controller" );
 
-const validateToken = require( "../middlewares/validateToken" );
-const authorize = require( "../middlewares/authorize" );
-const setUser = require( "../middlewares/setUser" );
+const validateToken = require( "../../middlewares/validateToken" );
+const authorize = require( "../../middlewares/authorize" );
+const setUser = require( "../../middlewares/setUser" );
 // add other middlewares that are used
 
 const express = require( "express" );
@@ -36,7 +35,7 @@ const router = express.Router( );
 *           }
 *      }
 */
-router.post( "/users/registration", setUser, usersController.register );
+router.post( "/registration", setUser, controller.register );
 
 /**
 *    @apiGroup User
@@ -51,7 +50,7 @@ router.post( "/users/registration", setUser, usersController.register );
 *           }
 *      }
 */
-router.post( "/users/login", setUser, usersController.login );
+router.post( "/login", setUser, controller.login );
 
 /**
 *    @apiGroup User
@@ -62,7 +61,7 @@ router.post( "/users/login", setUser, usersController.login );
 *    @apiParam {Number} age  Mandatory age. Minimum 18.
 *    @apiParam {String} sex  Mandatory sex.
 */
-router.put( "/users/edit", authorize, validateToken, usersController.edit );
+router.put( "/edit", authorize, validateToken, controller.edit );
 
 /**
 *    @apiGroup User
@@ -73,16 +72,6 @@ router.put( "/users/edit", authorize, validateToken, usersController.edit );
 *           id:123456789
 *       }
 */
-router.delete( "/users/delete", authorize, validateToken, usersController.delete );
+router.delete( "/delete", authorize, validateToken, controller.delete );
 
-router.get( "/test", function( req, res ) {
-    res.json( { success: true } );
-} );
-
-router.use( errorsController.notFound );
-
-module.exports = function( app ) {
-    app.use( "/", router );
-    app.use( errorsController.errorLogger );
-    app.use( errorsController.errorHandler );
-};
+module.exports = router;
