@@ -6,20 +6,19 @@ module.exports = function( req, res, next ) {
     const token = req.body.token || req.query.token || req.headers[ "x-access-token" ];
 
     if ( token ) {
-        jwt.verify( token, SECRET, function( err, decoded ) {
+        return jwt.verify( token, SECRET, function( err, decoded ) {
             if ( err ) {
+                console.log( err );
                 return res.json( {
                     success: false,
                     message: "Failed to authenticate token.",
                 } );
             }
-            req.decoded = decoded;
+
+            req.user = decoded._doc; // eslint-disable-line no-underscore-dangle
             return next( );
         } );
     }
 
-    return res.status( 403 ).send( {
-        success: false,
-        message: "No token provided.",
-    } );
+    return res.unauthorized( );
 };
