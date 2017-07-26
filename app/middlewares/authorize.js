@@ -12,9 +12,6 @@ module.exports = function( req, res, next ) {
                 if ( err ) {
                     console.log( err );
                 }
-                if ( user ) {
-                    console.log( user );
-                }
                 return res.unauthorized( );
             }
             req.user = user;
