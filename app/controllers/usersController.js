@@ -1,6 +1,7 @@
 const mongoose = require( "mongoose" );
 const extractObject = require( "../utilities/functions" ).extractObject;
 const jwt = require( "jsonwebtoken" );
+const md5 = require( "md5" );
 
 const User = mongoose.model( "User" );
 const SECRET = "superSuperSecret";
@@ -11,6 +12,7 @@ exports.register = ( req, res ) => {
         res.preconditionFailed( "existing_user" );
     } else {
         user = new User( req.body );
+        user.setPass( req.body.password );
         user.save( function( err, savedUser ) {
             if ( err ) {
                 res.validationError( err );
@@ -29,8 +31,8 @@ exports.login = ( req, res ) => {
         res.status( 400 ).send( "password required" );
         return;
     }
-
-    const password = req.body.password;
+    
+    const password = md5( req.body.password );
 
     if ( user ) {
         if ( user.password !== password ) {
