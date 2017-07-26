@@ -1,4 +1,5 @@
 const mongoose = require( "mongoose" );
+
 const User = mongoose.model( "User" );
 
 module.exports = function( req, res, next ) {
@@ -7,7 +8,7 @@ module.exports = function( req, res, next ) {
         return res.preconditionFailed( "missing_id" );
     }
 
-    User.findOne(
+    return User.findOne(
         { id },
         function( err, user ) {
             if ( err ) {

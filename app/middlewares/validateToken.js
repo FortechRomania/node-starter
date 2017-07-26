@@ -1,4 +1,5 @@
 const jwt = require( "jsonwebtoken" );
+
 const SECRET = "superSuperSecret";
 
 module.exports = function( req, res, next ) {
@@ -13,12 +14,12 @@ module.exports = function( req, res, next ) {
                 } );
             }
             req.decoded = decoded;
-            next( );
-        } );
-    } else {
-        return res.status( 403 ).send( {
-            success: false,
-            message: "No token provided.",
+            return next( );
         } );
     }
+
+    return res.status( 403 ).send( {
+        success: false,
+        message: "No token provided.",
+    } );
 };
