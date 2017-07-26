@@ -3,7 +3,6 @@ exports.notFound = ( req, res ) => {
 };
 
 exports.errorLogger = ( err, req, res, next ) => {
-    console.log( err.stack );
     next( err );
 };
 
