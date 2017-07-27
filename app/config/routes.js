@@ -4,7 +4,6 @@ const usersController = require( "../controllers/usersController" );
 
 const validateToken = require( "../middlewares/validateToken" );
 const authorize = require( "../middlewares/authorize" );
-const setUser = require( "../middlewares/setUser" );
 // add other middlewares that are used
 
 const express = require( "express" );
@@ -36,7 +35,7 @@ const router = express.Router( );
 *           }
 *      }
 */
-router.post( "/users/registration", setUser, usersController.register );
+router.post( "/users/registration", authorize, usersController.register );
 
 /**
 *    @apiGroup User
@@ -51,7 +50,7 @@ router.post( "/users/registration", setUser, usersController.register );
 *           }
 *      }
 */
-router.post( "/users/login", setUser, usersController.login );
+router.post( "/users/login", authorize, usersController.login );
 
 /**
 *    @apiGroup User
