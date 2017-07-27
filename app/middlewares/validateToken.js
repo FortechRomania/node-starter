@@ -16,10 +16,8 @@ module.exports = function( req, res, next ) {
             req.decoded = decoded;
             return next( );
         } );
-    }
+    } else {
 
-    return res.status( 403 ).send( {
-        success: false,
-        message: "No token provided.",
-    } );
+    return res.unauthorized( );
+  }
 };

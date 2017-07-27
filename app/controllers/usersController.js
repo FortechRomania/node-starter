@@ -40,7 +40,7 @@ exports.login = ( req, res ) => {
             } );
         }
 
-        const token = jwt.sign( user, SECRET, { expiresIn: 1440 } );
+        const token = jwt.sign( user.toObject(), SECRET, { expiresIn: 1440 } );
         return res.json( {
             success: true,
             token,
