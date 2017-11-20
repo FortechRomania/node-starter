@@ -26,13 +26,17 @@
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
     "jsonwebtoken": "^7.1.9",
-    "md5": "^2.2.1",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.1",
     "save": "^2.3.0"
   },
   "devDependencies": {
-    "babel-eslint": "^6.1.2",
-    "eslint-config-fortech": "^1.0.0"
+    "babel-eslint": "^8.0.2",
+    "bcrypt": "^1.0.3",
+    "eslint": "^4.11.0",
+    "eslint-config-fortech": "^2.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "uid": "0.0.2",
+    "eslint-config-airbnb-base": "^12.0.2"
   }
 }
