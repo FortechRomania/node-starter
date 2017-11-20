@@ -72,5 +72,5 @@ module.exports = ( req, res, next ) => {
 function extractValidationType( errors ) {
     const fields = Object.keys( errors );
     return fields.map( key => errors[ key ] )
-                 .map( validation => ( { errorOnField: validation.path, message: validation.message } ) );
+        .map( validation => ( { errorOnField: validation.path, message: validation.message } ) );
 }

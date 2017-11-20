@@ -1,7 +1,7 @@
 const config = require( "./index" );
 const mongoose = require( "mongoose" );
 
-module.exports = function( app ) {
+module.exports = ( app ) => {
     mongoose.connect( config.mongoUrl, { useMongoClient: true } );
     mongoose.Promise = global.Promise;
 
@@ -15,7 +15,7 @@ module.exports = function( app ) {
 };
 
 function cleanup( ) {
-    mongoose.connection.close( function( ) {
+    mongoose.connection.close( ( ) => {
         process.exit( 0 );
     } );
 }

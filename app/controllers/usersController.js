@@ -60,7 +60,7 @@ exports.edit = ( req, res ) => {
     user.sex = sex;
     user.age = age;
 
-    user.save( function( err, savedUser ) {
+    user.save( ( err, savedUser ) => {
         if ( err ) {
             return res.validationError( err );
         }
