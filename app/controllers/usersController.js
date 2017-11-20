@@ -1,5 +1,5 @@
 const mongoose = require( "mongoose" );
-const extractObject = require( "../utilities" ).extractObject;
+const { extractObject } = require( "../utilities" );
 const jwt = require( "jsonwebtoken" );
 const md5 = require( "md5" );
 
@@ -7,7 +7,7 @@ const User = mongoose.model( "User" );
 const SECRET = "superSuperSecret";
 
 exports.register = ( req, res ) => {
-    let user = req.user;
+    const { user } = req;
     if ( user ) {
         return res.preconditionFailed( "existing_user" );
     }
@@ -25,7 +25,7 @@ exports.register = ( req, res ) => {
 };
 
 exports.login = ( req, res ) => {
-    const user = req.user;
+    const { user } = req;
     if ( !req.body.password ) {
         res.status( 400 ).send( "password required" );
         return;
@@ -53,10 +53,8 @@ exports.login = ( req, res ) => {
 };
 
 exports.edit = ( req, res ) => {
-    const user = req.user;
-    const name = req.body.name;
-    const sex = req.body.sex;
-    const age = req.body.age;
+    const { user } = req;
+    const { name, sex, age } = req.body;
 
     user.name = name;
     user.sex = sex;
@@ -73,7 +71,7 @@ exports.edit = ( req, res ) => {
 };
 
 exports.delete = ( req, res ) => {
-    const user = req.user;
+    const { user } = req;
 
     user.remove( );
     res.success( );
