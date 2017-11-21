@@ -1,4 +1,4 @@
-const md5 = require( "md5" );
+const bcrypt = require( "bcrypt" );
 const mongoose = require( "mongoose" );
 
 const { Schema } = mongoose;
@@ -15,7 +15,10 @@ const userSchema = new Schema( {
 } );
 
 userSchema.methods.setPass = function( password ) {
-    this.password = md5( password );
+    const saltRounds = 10;
+    bcrypt.hash( password, saltRounds, function( err, hash ) {
+        this.password = hash;
+    } );
 };
 
 module.exports = mongoose.model( "User", userSchema );
