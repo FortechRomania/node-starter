@@ -1,7 +1,7 @@
 const mongoose = require( "mongoose" );
 const { extractObject } = require( "../utilities" );
 const jwt = require( "jsonwebtoken" );
-const md5 = require( "md5" );
+const bcrypt = require( "bcrypt" );
 
 const User = mongoose.model( "User" );
 const SECRET = "superSuperSecret";
@@ -31,7 +31,7 @@ exports.login = ( req, res ) => {
         return;
     }
 
-    const password = md5( req.body.password );
+    const password = bcrypt.compareSync( req.body.password, user.password );
     if ( user ) {
         if ( user.password !== password ) {
             return res.json( {
