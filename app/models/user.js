@@ -19,6 +19,6 @@ userSchema.methods.setPass = function( password ) {
     bcrypt.hash( password, saltRounds, function( err, hash ) {
         this.password = hash;
     } );
-}
+};
 
 module.exports = mongoose.model( "User", userSchema );

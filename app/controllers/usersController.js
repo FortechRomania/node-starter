@@ -9,7 +9,8 @@ const SECRET = "superSuperSecret";
 exports.register = ( req, res ) => {
     let { user } = req;
     if ( user ) {
-        return res.preconditionFailed( "existing_user" );
+        res.preconditionFailed( "existing_user" );
+        return;
     }
     user = new User( req.body );
     user.setPass( req.body.password );
@@ -27,8 +28,7 @@ exports.register = ( req, res ) => {
 exports.login = ( req, res ) => {
     const { user } = req;
     if ( !req.body.password ) {
-        res.status( 400 ).send( "password required" );
-        return;
+        return res.status( 400 ).send( "password required" );
     }
 
     const password = bcrypt.compareSync( req.body.password, user.password );
