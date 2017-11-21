@@ -16,7 +16,7 @@ module.exports = ( req, res, next ) => {
             req.decoded = decoded;
             return next( );
         } );
-    } else {
-        return res.unauthorized( );
     }
+
+    return res.unauthorized( );
 };
