@@ -15,7 +15,7 @@ const userSchema = new Schema( {
 } );
 
 userSchema.methods.setPass = function( password ) {
-  this.password = md5( password );
-}
+    this.password = md5( password );
+};
 
 module.exports = mongoose.model( "User", userSchema );

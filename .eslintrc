@@ -1,6 +1,3 @@
 {
-    "extends": "fortech",
-    "rules": {
-        "consistent-return": [ 0 ]
-    }
+    "extends": "fortech"
 }
