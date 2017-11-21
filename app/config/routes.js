@@ -1,4 +1,3 @@
-const errorsController = require( "../controllers/errorsController" );
 const usersController = require( "../controllers/usersController" );
 // add other controllers that are used
 
@@ -78,10 +77,6 @@ router.get( "/test", ( req, res ) => {
     res.json( { success: true } );
 } );
 
-router.use( errorsController.notFound );
-
 module.exports = ( app ) => {
     app.use( "/", router );
-    app.use( errorsController.errorLogger );
-    app.use( errorsController.errorHandler );
 };
