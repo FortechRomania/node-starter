@@ -74,13 +74,13 @@ router.put( "/users/edit", authorize, validateToken, usersController.edit );
 */
 router.delete( "/users/delete", authorize, validateToken, usersController.delete );
 
-router.get( "/test", function( req, res ) {
+router.get( "/test", ( req, res ) => {
     res.json( { success: true } );
 } );
 
 router.use( errorsController.notFound );
 
-module.exports = function( app ) {
+module.exports = ( app ) => {
     app.use( "/", router );
     app.use( errorsController.errorLogger );
     app.use( errorsController.errorHandler );

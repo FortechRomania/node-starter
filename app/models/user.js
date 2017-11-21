@@ -1,7 +1,7 @@
 const md5 = require( "md5" );
 const mongoose = require( "mongoose" );
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const userSchema = new Schema( {
     id: { type: String, required: true },
@@ -15,7 +15,7 @@ const userSchema = new Schema( {
 } );
 
 userSchema.methods.setPass = function( password ) {
-  this.password = md5( password );
-}
+    this.password = md5( password );
+};
 
 module.exports = mongoose.model( "User", userSchema );

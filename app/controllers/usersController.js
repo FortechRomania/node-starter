@@ -1,5 +1,5 @@
 const mongoose = require( "mongoose" );
-const extractObject = require( "../utilities" ).extractObject;
+const { extractObject } = require( "../utilities" );
 const jwt = require( "jsonwebtoken" );
 const md5 = require( "md5" );
 
@@ -7,28 +7,28 @@ const User = mongoose.model( "User" );
 const SECRET = "superSuperSecret";
 
 exports.register = ( req, res ) => {
-    let user = req.user;
+    let { user } = req;
     if ( user ) {
-        return res.preconditionFailed( "existing_user" );
+        res.preconditionFailed( "existing_user" );
+        return;
     }
     user = new User( req.body );
     user.setPass( req.body.password );
-    user.save( function( err, savedUser ) {
+    user.save( ( err, savedUser ) => {
         if ( err ) {
             return res.validationError( err );
-        } else {
-            return res.success( extractObject(
-                savedUser,
-                [ "id", "username" ] ) );
         }
+        return res.success( extractObject(
+            savedUser,
+            [ "id", "username" ],
+        ) );
     } );
 };
 
 exports.login = ( req, res ) => {
-    const user = req.user;
+    const { user } = req;
     if ( !req.body.password ) {
-        res.status( 400 ).send( "password required" );
-        return;
+        return res.status( 400 ).send( "password required" );
     }
 
     const password = md5( req.body.password );
@@ -44,7 +44,7 @@ exports.login = ( req, res ) => {
         return res.json( {
             success: true,
             token,
-            } );
+        } );
     }
     return res.json( {
         success: false,
@@ -53,27 +53,26 @@ exports.login = ( req, res ) => {
 };
 
 exports.edit = ( req, res ) => {
-    const user = req.user;
-    const name = req.body.name;
-    const sex = req.body.sex;
-    const age = req.body.age;
+    const { user } = req;
+    const { name, sex, age } = req.body;
 
     user.name = name;
     user.sex = sex;
     user.age = age;
 
-    user.save( function( err, savedUser ) {
+    user.save( ( err, savedUser ) => {
         if ( err ) {
             return res.validationError( err );
         }
         return res.success( extractObject(
             savedUser,
-            [ "id", "name", "age", "sex" ] ) );
+            [ "id", "name", "age", "sex" ],
+        ) );
     } );
 };
 
 exports.delete = ( req, res ) => {
-    const user = req.user;
+    const { user } = req;
 
     user.remove( );
     res.success( );
