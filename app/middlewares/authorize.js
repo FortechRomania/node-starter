@@ -10,14 +10,15 @@ module.exports = ( req, res, next ) => {
 
     return User.findOne(
         { id },
-        function( err, user ) {
-            if( err ) {
-              // if( err ) {
+        ( err, user ) => {
+            if ( err ) {
+                // if( err ) {
                 return res.serverError( );
-              // }
-              // return res.unauthorized( );
+                // }
+                // return res.unauthorized( );
             }
             req.user = user;
             return next( );
-        } );
+        },
+    );
 };

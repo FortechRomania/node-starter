@@ -17,7 +17,6 @@ module.exports = ( req, res, next ) => {
             return next( );
         } );
     } else {
-
-    return res.unauthorized( );
-  }
+        return res.unauthorized( );
+    }
 };

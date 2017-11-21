@@ -7,20 +7,20 @@ const User = mongoose.model( "User" );
 const SECRET = "superSuperSecret";
 
 exports.register = ( req, res ) => {
-    const { user } = req;
+    let { user } = req;
     if ( user ) {
         return res.preconditionFailed( "existing_user" );
     }
     user = new User( req.body );
     user.setPass( req.body.password );
-    user.save( function( err, savedUser ) {
+    user.save( ( err, savedUser ) => {
         if ( err ) {
             return res.validationError( err );
-        } else {
-            return res.success( extractObject(
-                savedUser,
-                [ "id", "username" ] ) );
         }
+        return res.success( extractObject(
+            savedUser,
+            [ "id", "username" ],
+        ) );
     } );
 };
 
@@ -44,7 +44,7 @@ exports.login = ( req, res ) => {
         return res.json( {
             success: true,
             token,
-            } );
+        } );
     }
     return res.json( {
         success: false,
@@ -66,7 +66,8 @@ exports.edit = ( req, res ) => {
         }
         return res.success( extractObject(
             savedUser,
-            [ "id", "name", "age", "sex" ] ) );
+            [ "id", "name", "age", "sex" ],
+        ) );
     } );
 };
 
