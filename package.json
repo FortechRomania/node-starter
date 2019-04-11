@@ -8,7 +8,9 @@
     "start": "nodemon --watch app app/index.js",
     "doc": "apidoc -i app/ -o doc",
     "lint": "eslint app",
-    "ci": "npm run lint"
+    "ci": "npm run lint",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -22,14 +24,15 @@
   "license": "ISC",
   "homepage": "https://github.com/FortechRomania/node-starter#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "express-jwt": "^5.1.0",
-    "jsonwebtoken": "^7.1.9",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "express-jwt": "^5.3.0",
+    "jsonwebtoken": "^8.0.0",
     "mongodb": "^2.2.10",
-    "mongoose": "^4.6.1",
+    "mongoose": "^4.13.17",
     "save": "^2.3.0",
-    "winston": "^2.4.0"
+    "winston": "^2.4.0",
+    "snyk": "^1.150.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
@@ -39,5 +42,6 @@
     "eslint-plugin-import": "^2.8.0",
     "uid": "0.0.2",
     "eslint-config-airbnb-base": "^12.0.2"
-  }
+  },
+  "snyk": true
 }
