@@ -27,7 +27,7 @@
     "express-jwt": "^5.1.0",
     "jsonwebtoken": "^7.1.9",
     "mongodb": "^2.2.10",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.12.3",
     "save": "^2.3.0",
     "winston": "^2.4.0"
   },
