@@ -29,7 +29,7 @@
     "mongodb": "^2.2.10",
     "mongoose": "^5.7.5",
     "save": "^2.3.0",
-    "winston": "^2.4.0"
+    "winston": "^3.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
