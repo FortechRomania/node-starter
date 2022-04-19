@@ -28,7 +28,7 @@
     "jsonwebtoken": "^7.1.9",
     "mongodb": "^2.2.10",
     "mongoose": "^5.7.5",
-    "save": "^2.3.0",
+    "save": "^2.5.0",
     "winston": "^2.4.0"
   },
   "devDependencies": {
